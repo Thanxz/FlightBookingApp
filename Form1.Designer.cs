@@ -34,103 +34,108 @@
             txtFirstName = new TextBox();
             txtMiddleName = new TextBox();
             txtPassportNumber = new TextBox();
+            txtFilterFlightNumber = new TextBox();
             dtpDepartureDate = new DateTimePicker();
             btnAddBooking = new Button();
             btnRemoveBooking = new Button();
             btnFilter = new Button();
             lstBookings = new ListBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
+            labelDestination = new Label();
+            labelFlightNumber = new Label();
+            labelLastName = new Label();
+            labelFirstName = new Label();
+            labelMiddleName = new Label();
+            labelPassportNumber = new Label();
+            labelDepartureDate = new Label();
+            labelFilterFlightNumber = new Label();
+            labelFilterDate = new Label();
+            dtpFilterDate = new DateTimePicker();
             SuspendLayout();
             // 
             // txtDestination
             // 
-            txtDestination.Location = new Point(288, 35);
+            txtDestination.BackColor = SystemColors.Window;
+            txtDestination.Location = new Point(150, 30);
             txtDestination.Name = "txtDestination";
-            txtDestination.Size = new Size(100, 23);
-            txtDestination.TabIndex = 1;
-            txtDestination.TextChanged += txtDestination_TextChanged;
+            txtDestination.Size = new Size(200, 23);
+            txtDestination.TabIndex = 0;
             // 
             // txtFlightNumber
             // 
-            txtFlightNumber.Location = new Point(288, 64);
+            txtFlightNumber.Location = new Point(150, 70);
             txtFlightNumber.Name = "txtFlightNumber";
-            txtFlightNumber.Size = new Size(100, 23);
-            txtFlightNumber.TabIndex = 3;
-            txtFlightNumber.TextChanged += txtFlightNumber_TextChanged;
+            txtFlightNumber.Size = new Size(200, 23);
+            txtFlightNumber.TabIndex = 1;
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(288, 93);
+            txtLastName.Location = new Point(150, 110);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(100, 23);
-            txtLastName.TabIndex = 4;
-            txtLastName.TextChanged += txtLastName_TextChanged;
+            txtLastName.Size = new Size(200, 23);
+            txtLastName.TabIndex = 2;
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(288, 122);
+            txtFirstName.Location = new Point(150, 150);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(100, 23);
-            txtFirstName.TabIndex = 5;
-            txtFirstName.TextChanged += txtFirstName_TextChanged;
+            txtFirstName.Size = new Size(200, 23);
+            txtFirstName.TabIndex = 3;
             // 
             // txtMiddleName
             // 
-            txtMiddleName.Location = new Point(288, 151);
+            txtMiddleName.Location = new Point(150, 190);
             txtMiddleName.Name = "txtMiddleName";
-            txtMiddleName.Size = new Size(100, 23);
-            txtMiddleName.TabIndex = 6;
-            txtMiddleName.TextChanged += txtMiddleName_TextChanged;
+            txtMiddleName.Size = new Size(200, 23);
+            txtMiddleName.TabIndex = 4;
             // 
             // txtPassportNumber
             // 
-            txtPassportNumber.Location = new Point(288, 180);
+            txtPassportNumber.Location = new Point(150, 230);
             txtPassportNumber.Name = "txtPassportNumber";
-            txtPassportNumber.Size = new Size(100, 23);
-            txtPassportNumber.TabIndex = 12;
-            txtPassportNumber.TextChanged += txtPassportNumber_TextChanged;
+            txtPassportNumber.Size = new Size(200, 23);
+            txtPassportNumber.TabIndex = 5;
+            // 
+            // txtFilterFlightNumber
+            // 
+            txtFilterFlightNumber.Location = new Point(560, 361);
+            txtFilterFlightNumber.Name = "txtFilterFlightNumber";
+            txtFilterFlightNumber.Size = new Size(145, 23);
+            txtFilterFlightNumber.TabIndex = 9;
             // 
             // dtpDepartureDate
             // 
-            dtpDepartureDate.Location = new Point(288, 209);
+            dtpDepartureDate.Location = new Point(150, 270);
             dtpDepartureDate.Name = "dtpDepartureDate";
             dtpDepartureDate.Size = new Size(200, 23);
-            dtpDepartureDate.TabIndex = 13;
-            dtpDepartureDate.Value = new DateTime(2024, 10, 11, 18, 40, 41, 579);
+            dtpDepartureDate.TabIndex = 6;
             dtpDepartureDate.ValueChanged += dtpDepartureDate_ValueChanged;
             // 
             // btnAddBooking
             // 
-            btnAddBooking.Location = new Point(183, 251);
+            btnAddBooking.Location = new Point(250, 315);
             btnAddBooking.Name = "btnAddBooking";
-            btnAddBooking.Size = new Size(127, 23);
-            btnAddBooking.TabIndex = 14;
+            btnAddBooking.Size = new Size(100, 42);
+            btnAddBooking.TabIndex = 8;
             btnAddBooking.Text = "Добавить заявку";
             btnAddBooking.UseVisualStyleBackColor = true;
             btnAddBooking.Click += btnAddBooking_Click;
             // 
             // btnRemoveBooking
             // 
-            btnRemoveBooking.Location = new Point(371, 251);
+            btnRemoveBooking.Location = new Point(144, 321);
             btnRemoveBooking.Name = "btnRemoveBooking";
-            btnRemoveBooking.Size = new Size(117, 23);
-            btnRemoveBooking.TabIndex = 15;
+            btnRemoveBooking.Size = new Size(100, 36);
+            btnRemoveBooking.TabIndex = 9;
             btnRemoveBooking.Text = "Удалить заявку";
             btnRemoveBooking.UseVisualStyleBackColor = true;
             btnRemoveBooking.Click += btnRemoveBooking_Click;
             // 
             // btnFilter
             // 
-            btnFilter.Location = new Point(224, 296);
+            btnFilter.Location = new Point(553, 410);
             btnFilter.Name = "btnFilter";
-            btnFilter.Size = new Size(180, 23);
-            btnFilter.TabIndex = 16;
+            btnFilter.Size = new Size(152, 36);
+            btnFilter.TabIndex = 10;
             btnFilter.Text = "Фильтровать заявки";
             btnFilter.UseVisualStyleBackColor = true;
             btnFilter.Click += btnFilter_Click;
@@ -139,107 +144,129 @@
             // 
             lstBookings.FormattingEnabled = true;
             lstBookings.ItemHeight = 15;
-            lstBookings.Location = new Point(509, 35);
+            lstBookings.Location = new Point(396, 30);
             lstBookings.Name = "lstBookings";
-            lstBookings.Size = new Size(268, 364);
-            lstBookings.TabIndex = 17;
-            lstBookings.SelectedIndexChanged += lstBookings_SelectedIndexChanged;
+            lstBookings.Size = new Size(300, 289);
+            lstBookings.TabIndex = 11;
             // 
-            // label1
+            // labelDestination
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(175, 38);
-            label1.Name = "label1";
-            label1.Size = new Size(107, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Пункт назначения";
-            label1.Click += label1_Click;
+            labelDestination.AutoSize = true;
+            labelDestination.Location = new Point(12, 33);
+            labelDestination.Name = "labelDestination";
+            labelDestination.Size = new Size(107, 15);
+            labelDestination.TabIndex = 0;
+            labelDestination.Text = "Пункт назначения";
             // 
-            // label2
+            // labelFlightNumber
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(202, 67);
-            label2.Name = "label2";
-            label2.Size = new Size(80, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Номер рейса";
-            label2.Click += label2_Click;
+            labelFlightNumber.AutoSize = true;
+            labelFlightNumber.Location = new Point(12, 73);
+            labelFlightNumber.Name = "labelFlightNumber";
+            labelFlightNumber.Size = new Size(80, 15);
+            labelFlightNumber.TabIndex = 2;
+            labelFlightNumber.Text = "Номер рейса";
             // 
-            // label3
+            // labelLastName
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(224, 96);
-            label3.Name = "label3";
-            label3.Size = new Size(58, 15);
-            label3.TabIndex = 7;
-            label3.Text = "Фамилия";
-            label3.Click += label3_Click;
+            labelLastName.AutoSize = true;
+            labelLastName.Location = new Point(12, 113);
+            labelLastName.Name = "labelLastName";
+            labelLastName.Size = new Size(58, 15);
+            labelLastName.TabIndex = 3;
+            labelLastName.Text = "Фамилия";
             // 
-            // label4
+            // labelFirstName
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(251, 125);
-            label4.Name = "label4";
-            label4.Size = new Size(31, 15);
-            label4.TabIndex = 8;
-            label4.Text = "Имя";
-            label4.Click += label4_Click;
+            labelFirstName.AutoSize = true;
+            labelFirstName.Location = new Point(12, 153);
+            labelFirstName.Name = "labelFirstName";
+            labelFirstName.Size = new Size(31, 15);
+            labelFirstName.TabIndex = 4;
+            labelFirstName.Text = "Имя";
             // 
-            // label5
+            // labelMiddleName
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(224, 154);
-            label5.Name = "label5";
-            label5.Size = new Size(58, 15);
-            label5.TabIndex = 9;
-            label5.Text = "Отчество";
-            label5.Click += label5_Click;
+            labelMiddleName.AutoSize = true;
+            labelMiddleName.Location = new Point(12, 193);
+            labelMiddleName.Name = "labelMiddleName";
+            labelMiddleName.Size = new Size(58, 15);
+            labelMiddleName.TabIndex = 5;
+            labelMiddleName.Text = "Отчество";
             // 
-            // label6
+            // labelPassportNumber
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(183, 183);
-            label6.Name = "label6";
-            label6.Size = new Size(99, 15);
-            label6.TabIndex = 10;
-            label6.Text = "Номер паспорта";
-            label6.Click += label6_Click;
+            labelPassportNumber.AutoSize = true;
+            labelPassportNumber.Location = new Point(12, 233);
+            labelPassportNumber.Name = "labelPassportNumber";
+            labelPassportNumber.Size = new Size(99, 15);
+            labelPassportNumber.TabIndex = 6;
+            labelPassportNumber.Text = "Номер паспорта";
             // 
-            // label7
+            // labelDepartureDate
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(208, 212);
-            label7.Name = "label7";
-            label7.Size = new Size(74, 15);
-            label7.TabIndex = 11;
-            label7.Text = "Дата вылета";
-            label7.Click += label7_Click;
+            labelDepartureDate.AutoSize = true;
+            labelDepartureDate.Location = new Point(12, 270);
+            labelDepartureDate.Name = "labelDepartureDate";
+            labelDepartureDate.Size = new Size(74, 15);
+            labelDepartureDate.TabIndex = 7;
+            labelDepartureDate.Text = "Дата вылета";
+            // 
+            // labelFilterFlightNumber
+            // 
+            labelFilterFlightNumber.AutoSize = true;
+            labelFilterFlightNumber.Location = new Point(560, 332);
+            labelFilterFlightNumber.Name = "labelFilterFlightNumber";
+            labelFilterFlightNumber.Size = new Size(145, 15);
+            labelFilterFlightNumber.TabIndex = 8;
+            labelFilterFlightNumber.Text = "Фильтр по номеру рейса";
+            // 
+            // labelFilterDate
+            // 
+            labelFilterDate.AutoSize = true;
+            labelFilterDate.Location = new Point(426, 332);
+            labelFilterDate.Name = "labelFilterDate";
+            labelFilterDate.Size = new Size(91, 15);
+            labelFilterDate.TabIndex = 10;
+            labelFilterDate.Text = "Фильтр по дате";
+            // 
+            // dtpFilterDate
+            // 
+            dtpFilterDate.Location = new Point(396, 361);
+            dtpFilterDate.Name = "dtpFilterDate";
+            dtpFilterDate.Size = new Size(145, 23);
+            dtpFilterDate.TabIndex = 11;
+            dtpFilterDate.ValueChanged += dtpFilterDate_ValueChanged;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(lstBookings);
-            Controls.Add(btnFilter);
-            Controls.Add(btnRemoveBooking);
-            Controls.Add(btnAddBooking);
-            Controls.Add(dtpDepartureDate);
-            Controls.Add(txtPassportNumber);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(txtMiddleName);
-            Controls.Add(txtFirstName);
-            Controls.Add(txtLastName);
-            Controls.Add(txtFlightNumber);
-            Controls.Add(label2);
+            BackColor = SystemColors.ActiveCaption;
+            ClientSize = new Size(745, 458);
             Controls.Add(txtDestination);
-            Controls.Add(label1);
+            Controls.Add(labelDestination);
+            Controls.Add(txtFlightNumber);
+            Controls.Add(labelFlightNumber);
+            Controls.Add(txtLastName);
+            Controls.Add(labelLastName);
+            Controls.Add(txtFirstName);
+            Controls.Add(labelFirstName);
+            Controls.Add(txtMiddleName);
+            Controls.Add(labelMiddleName);
+            Controls.Add(txtPassportNumber);
+            Controls.Add(labelPassportNumber);
+            Controls.Add(dtpDepartureDate);
+            Controls.Add(labelDepartureDate);
+            Controls.Add(btnAddBooking);
+            Controls.Add(btnRemoveBooking);
+            Controls.Add(btnFilter);
+            Controls.Add(lstBookings);
+            Controls.Add(labelFilterFlightNumber);
+            Controls.Add(txtFilterFlightNumber);
+            Controls.Add(labelFilterDate);
+            Controls.Add(dtpFilterDate);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Заявки на авиабилеты";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -248,21 +275,23 @@
 
         private Label label1;
         private TextBox txtDestination;
-        private Label label2;
         private TextBox txtFlightNumber;
         private TextBox txtLastName;
         private TextBox txtFirstName;
         private TextBox txtMiddleName;
+        private TextBox txtFilterFlightNumber;
         private Label label3;
         private Label label4;
         private Label label5;
         private Label label6;
         private Label label7;
+        private Label labelFilterFlightNumber;
         private TextBox txtPassportNumber;
-        private DateTimePicker dtpDepartureDate;
         private Button btnAddBooking;
         private Button btnRemoveBooking;
         private Button btnFilter;
         private ListBox lstBookings;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DateTimePicker dtpFilterDate;
     }
 }

@@ -8,18 +8,27 @@ namespace FlightBookingApp
     public partial class Form1 : Form
     {
         private List<FlightBooking> bookings;
+        private Label labelDestination;
+        private Label labelFlightNumber;
+        private Label labelFilterDate;
+        private Label labelLastName;
+        private Label labelFirstName;
+        private Label labelMiddleName;
+        private Label labelPassportNumber;
+        private Label labelDepartureDate;
+        private DateTimePicker dtpDepartureDate;
+        //private TextBox txtFilterFlightNumber;
+
 
         public Form1()
         {
             InitializeComponent();
             bookings = new List<FlightBooking>();
+
         }
 
         private void btnAddBooking_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Обработчик события вызван!"); // Для отладки
-
-            // Проверка на заполнение обязательных полей
             if (string.IsNullOrWhiteSpace(txtDestination.Text) ||
                 string.IsNullOrWhiteSpace(txtFlightNumber.Text) ||
                 string.IsNullOrWhiteSpace(txtLastName.Text) ||
@@ -41,16 +50,19 @@ namespace FlightBookingApp
                     MiddleName = txtMiddleName.Text,
                     PassportNumber = txtPassportNumber.Text
                 },
+
                 DepartureDate = dtpDepartureDate.Value.Date
             };
 
             bookings.Add(booking);
             UpdateBookingList();
             ClearInputs();
+            MessageBox.Show("Заявка добавлена: " + booking.ToString());
         }
+
         private void btnRemoveBooking_Click(object sender, EventArgs e)
         {
-            if (lstBookings.SelectedItem != null) // Проверка на наличие выбранного элемента
+            if (lstBookings.SelectedItem != null)
             {
                 var selectedBooking = (FlightBooking)lstBookings.SelectedItem;
                 bookings.Remove(selectedBooking);
@@ -61,10 +73,30 @@ namespace FlightBookingApp
                 MessageBox.Show("Пожалуйста, выберите заявку для удаления.");
             }
         }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            var flightNumber = txtFilterFlightNumber.Text.Trim(); // Удаляем лишние пробелы
+            DateTime departureDate = dtpFilterDate.Value.Date; // Получаем выбранную дату
+
+            var filteredBookings = bookings
+                .Where(b => b.FlightNumber.Equals(flightNumber, StringComparison.OrdinalIgnoreCase) &&
+                             b.DepartureDate.Date == departureDate) // Фильтрация по номеру рейса и дате
+                .ToList(); // Преобразуем результат в список
+
+            if (filteredBookings.Count == 0)
+            {
+                MessageBox.Show("Заявки не найдены.");
+            }
+
+            lstBookings.DataSource = null; // Сбрасываем источник данных
+            lstBookings.DataSource = filteredBookings; // Устанавливаем новый источник данных
+        }
+
         private void UpdateBookingList()
         {
             lstBookings.DataSource = null;
-            lstBookings.DataSource = bookings;
+            lstBookings.DataSource = bookings; // Обновление списка заявок на форме
         }
 
         private void ClearInputs()
@@ -75,39 +107,7 @@ namespace FlightBookingApp
             txtFirstName.Clear();
             txtMiddleName.Clear();
             txtPassportNumber.Clear();
-            dtpDepartureDate.Value = DateTime.Now;
-        }
-
-        private void lstBookings_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnFilter_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-            string flightNumber = txtFlightNumber.Text;
-            DateTime departureDate = dtpDepartureDate.Value.Date;
-
-            var filteredBookings = bookings
-                .Where(b => b.FlightNumber == flightNumber && b.DepartureDate == departureDate)
-                .ToList();
-
-            lstBookings.DataSource = filteredBookings;
-        }
-
-        private void txtPassportNumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
+            dtpDepartureDate.Value = DateTime.Now; // Установка текущей даты по умолчанию для выбора даты вылета
         }
 
         private void dtpDepartureDate_ValueChanged(object sender, EventArgs e)
@@ -115,55 +115,17 @@ namespace FlightBookingApp
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void dtpFilterDate_ValueChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void txtDestination_TextChanged(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFlightNumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtLastName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFirstName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMiddleName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 
     public struct Passenger
