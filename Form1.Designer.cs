@@ -1,4 +1,6 @@
-﻿namespace FlightBookingApp
+﻿
+
+namespace FlightBookingApp
 {
     partial class Form1
     {
@@ -267,9 +269,14 @@
             Name = "Form1";
             Text = "Заявки на авиабилеты";
             Load += Form1_Load;
+            //Load += System.EventHandler(this.Form1_Load);
             ResumeLayout(false);
             PerformLayout();
         }
+
+        
+
+
 
         #endregion
 
