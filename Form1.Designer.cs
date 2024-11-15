@@ -52,6 +52,7 @@ namespace FlightBookingApp
             labelFilterFlightNumber = new Label();
             labelFilterDate = new Label();
             dtpFilterDate = new DateTimePicker();
+            btnExport = new Button();
             SuspendLayout();
             // 
             // txtDestination
@@ -239,6 +240,16 @@ namespace FlightBookingApp
             dtpFilterDate.Size = new Size(145, 23);
             dtpFilterDate.TabIndex = 11;
             dtpFilterDate.ValueChanged += dtpFilterDate_ValueChanged;
+            //
+            // btnAddBooking
+            //
+            btnExport.Location = new Point(350, 410);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(152, 36);
+            btnExport.TabIndex = 10;
+            btnExport.Text = "Экспорт";
+            btnExport.UseVisualStyleBackColor = true;
+            btnExport.Click += btnExport_Click;
             // 
             // Form1
             // 
@@ -266,6 +277,7 @@ namespace FlightBookingApp
             Controls.Add(txtFilterFlightNumber);
             Controls.Add(labelFilterDate);
             Controls.Add(dtpFilterDate);
+            Controls.Add(btnExport);
             Name = "Form1";
             Text = "Заявки на авиабилеты";
             Load += Form1_Load;
@@ -297,6 +309,7 @@ namespace FlightBookingApp
         private Button btnAddBooking;
         private Button btnRemoveBooking;
         private Button btnFilter;
+        private Button btnExport;
         private ListBox lstBookings;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private DateTimePicker dtpFilterDate;

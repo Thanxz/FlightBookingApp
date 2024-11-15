@@ -1,0 +1,33 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ArrayOfFlightBooking">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="FlightBooking">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Destination"/>
+                            <xs:element type="xs:string" name="FlightNumber"/>
+                            <xs:element name="Passenger">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="LastName"/>
+                                        <xs:element type="xs:string" name="FirstName"/>
+                                        <xs:element type="xs:string" name="MiddleName"/>
+                                        <xs:element type="xs:integer" name="PassportNumber"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element type="xs:dateTime" name="DepartureDate">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension></xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

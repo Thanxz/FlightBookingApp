@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfFlightBooking xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FlightBooking>
+    <Destination>New York</Destination>
+    <FlightNumber>NY123</FlightNumber>
+    <Passenger>
+      <LastName>Ivan</LastName>
+      <FirstName>Ivanov</FirstName>
+      <MiddleName>Ivanovich</MiddleName>
+      <PassportNumber>1234567890</PassportNumber>
+    </Passenger>
+    <DepartureDate>2024-11-15T00:00:00+03:00</DepartureDate>
+  </FlightBooking>
+  <FlightBooking>
+    <Destination>New York</Destination>
+    <FlightNumber>NY123</FlightNumber>
+    <Passenger>
+      <LastName>Ivan</LastName>
+      <FirstName>Ivanov</FirstName>
+      <MiddleName>Ivanovich</MiddleName>
+      <PassportNumber>1234567890</PassportNumber>
+    </Passenger>
+    <DepartureDate>2024-11-15T00:00:00+03:00</DepartureDate>
+  </FlightBooking>
+  <FlightBooking>
+    <Destination>New York</Destination>
+    <FlightNumber>NY123</FlightNumber>
+    <Passenger>
+      <LastName>Ivan</LastName>
+      <FirstName>Ivanov</FirstName>
+      <MiddleName>Ivanovich</MiddleName>
+      <PassportNumber>1234567890</PassportNumber>
+    </Passenger>
+    <DepartureDate>2024-11-15T00:00:00+03:00</DepartureDate>
+  </FlightBooking>
+</ArrayOfFlightBooking>
