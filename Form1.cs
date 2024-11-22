@@ -121,6 +121,13 @@ namespace FlightBookingApp
         {
             bookingManager.ExportToXml();
         }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            bookingManager.LoadBookings();
+            UpdateBookingList();
+        }
+
         private void UpdateBookingList()
         {
             lstBookings.DataSource = null;

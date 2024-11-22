@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
+using System.Xml;
 
 namespace FlightBookingApp
 {
@@ -141,10 +142,6 @@ namespace FlightBookingApp
             //и обрабатываем ситуацию, когда оно не найдено
             try
             {
-                if (!this.bookings.Contains(booking))
-                {
-                    throw new InvalidOperationException("Упс, бронирование не найдено в списке!");
-                }
                 this.bookings.Remove(booking);
             }
             catch (InvalidOperationException ex)
@@ -164,6 +161,44 @@ namespace FlightBookingApp
             using (FileStream fileStream = new FileStream("../../../bookings.xml", FileMode.Create))
             {
                 serializer.Serialize(fileStream, bookings);
+            }
+        }
+
+        public void LoadBookings()
+        {
+            var filePath = "../../../bookings.xml";
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException("Файл не найден.", filePath);
+            }
+
+            var xmlContent = File.ReadAllText(filePath);
+            var xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlContent);
+
+            var flightNodes = xmlDoc.SelectNodes("//FlightBooking");
+            if (flightNodes != null)
+            {
+                foreach (XmlNode flightNode in flightNodes)
+                {
+                    var destination = flightNode.SelectSingleNode("Destination")?.InnerText;
+                    var flightNumber = flightNode.SelectSingleNode("FlightNumber")?.InnerText;
+
+                    var passengerNode = flightNode.SelectSingleNode("Passenger");
+                    var passenger = new Passenger(
+                        passengerNode?.SelectSingleNode("FirstName")?.InnerText ?? "",
+                        passengerNode?.SelectSingleNode("LastName")?.InnerText ?? "",
+                        passengerNode?.SelectSingleNode("MiddleName")?.InnerText ?? "",
+                        passengerNode?.SelectSingleNode("PassportNumber")?.InnerText ?? "");
+
+                    var departureDateText = flightNode.SelectSingleNode("DepartureDate")?.InnerText;
+                    var departureDate = DateTime.TryParse(departureDateText, out var parsedDate)
+                        ? parsedDate
+                        : throw new FormatException("Некорректный формат даты вылета.");
+
+                    var booking = new FlightBooking(destination, flightNumber, passenger, departureDate);
+                    bookings.Add(booking);
+                }
             }
         }
 
