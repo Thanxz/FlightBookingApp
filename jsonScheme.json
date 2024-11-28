@@ -5,40 +5,39 @@
     "properties": {
       "destination": {
         "type": "string",
-        "description": "Пункт назначения"
+        "description": "РџСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ"
       },
       "flight_number": {
         "type": "string",
-        "description": "Номер рейса"
+        "description": "РќРѕРјРµСЂ СЂРµР№СЃР°"
       },
       "passenger": {
         "type": "object",
         "properties": {
           "last_name": {
             "type": "string",
-            "description": "Фамилия пассажира"
+            "description": "Р¤Р°РјРёР»РёСЏ РїР°СЃСЃР°Р¶РёСЂР°"
           },
           "first_name": {
             "type": "string",
-            "description": "Имя пассажира"
+            "description": "РРјСЏ РїР°СЃСЃР°Р¶РёСЂР°"
           },
           "middle_name": {
             "type": "string",
-            "description": "Отчество пассажира"
+            "description": "РћС‚С‡РµСЃС‚РІРѕ РїР°СЃСЃР°Р¶РёСЂР°"
           },
           "passport_number": {
             "type": "string",
-            "description": "Номер паспорта пассажира"
+            "description": "РќРѕРјРµСЂ РїР°СЃРїРѕСЂС‚Р° РїР°СЃСЃР°Р¶РёСЂР°"
           }
         },
-        "required": ["last_name", "first_name", "passport_number"]
+        "required": [ "last_name", "first_name", "passport_number" ]
       },
       "departure_date": {
         "type": "string",
         "format": "date-time",
-        "description": "Дата и время вылета"
+        "description": "Р”Р°С‚Р° Рё РІСЂРµРјСЏ РІС‹Р»РµС‚Р°"
       }
-    },
-    "required": ["destination", "flight_number", "passenger", "departure_date"]
+    }
   }
 }
