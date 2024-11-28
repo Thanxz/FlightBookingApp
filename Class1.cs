@@ -6,14 +6,23 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
 using System.Xml;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace FlightBookingApp
 {
     public struct Passenger
     {
+        [JsonPropertyName("last_name")]
         public string LastName { get; set; }
+
+        [JsonPropertyName("first_name")]
         public string FirstName { get; set; }
+
+        [JsonPropertyName("middle_name")]
         public string MiddleName { get; set; }
+
+        [JsonPropertyName("passport_number")]
         public string PassportNumber { get; set; }
 
         public Passenger(string firstname, string lastname, string middlename, string passportnumber)
@@ -27,9 +36,16 @@ namespace FlightBookingApp
 
     public struct FlightBooking
     {
+        [JsonPropertyName("destination")]
         public string Destination { get; set; }
+
+        [JsonPropertyName("flight_number")]
         public string FlightNumber { get; set; }
+
+        [JsonPropertyName("passenger")]
         public Passenger Passenger { get; set; }
+
+        [JsonPropertyName("departure_date")]
         public DateTime DepartureDate { get; set; }
 
         // Перегрузка оператора ==
@@ -200,6 +216,32 @@ namespace FlightBookingApp
                     bookings.Add(booking);
                 }
             }
+        }
+
+        public void SaveToJson()
+        {
+            var filePath = "../../../bookings.json";
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+
+            string json = JsonSerializer.Serialize(bookings, options);
+            File.WriteAllText(filePath, json);
+            MessageBox.Show("Данные успешно сохранены в JSON.");
+        }
+
+        public void LoadFromJson()
+        {
+            var filePath = "../../../bookings.json";
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException("Файл не найден.", filePath);
+            }
+
+            string json = File.ReadAllText(filePath);
+            bookings.AddRange(JsonSerializer.Deserialize<List<FlightBooking>>(json));
+
         }
 
         public List<FlightBooking> FilterBookings()

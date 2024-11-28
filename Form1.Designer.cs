@@ -54,6 +54,8 @@ namespace FlightBookingApp
             dtpFilterDate = new DateTimePicker();
             btnExport = new Button();
             btnImport = new Button();
+            btnExportJSON = new Button();
+            btnImportJSON = new Button();
             SuspendLayout();
             // 
             // txtDestination
@@ -244,23 +246,43 @@ namespace FlightBookingApp
             //
             // btnExport
             //
-            btnExport.Location = new Point(350, 410);
+            btnExport.Location = new Point(450, 410);
             btnExport.Name = "btnExport";
-            btnExport.Size = new Size(152, 36);
+            btnExport.Size = new Size(100, 36);
             btnExport.TabIndex = 10;
-            btnExport.Text = "Экспорт";
+            btnExport.Text = "Экспорт XML";
             btnExport.UseVisualStyleBackColor = true;
             btnExport.Click += btnExport_Click;
             //
             // btnImport
             //
-            btnImport.Location = new Point(150, 410);
+            btnImport.Location = new Point(350, 410);
             btnImport.Name = "btnImport";
-            btnImport.Size = new Size(152, 36);
+            btnImport.Size = new Size(100, 36);
             btnImport.TabIndex = 10;
-            btnImport.Text = "Импорт";
+            btnImport.Text = "Импорт XML";
             btnImport.UseVisualStyleBackColor = true;
             btnImport.Click += btnImport_Click;
+            //
+            // btnExportJSON
+            //
+            btnExportJSON.Location = new Point(200, 410);
+            btnExportJSON.Name = "btnExport";
+            btnExportJSON.Size = new Size(100, 36);
+            btnExportJSON.TabIndex = 10;
+            btnExportJSON.Text = "Экспорт JSON";
+            btnExportJSON.UseVisualStyleBackColor = true;
+            btnExportJSON.Click += btnExportJSON_Click;
+            //
+            // btnImportJSON
+            //
+            btnImportJSON.Location = new Point(100, 410);
+            btnImportJSON.Name = "btnImport";
+            btnImportJSON.Size = new Size(100, 36);
+            btnImportJSON.TabIndex = 10;
+            btnImportJSON.Text = "Импорт JSON";
+            btnImportJSON.UseVisualStyleBackColor = true;
+            btnImportJSON.Click += btnImportJSON_Click;
             // 
             // Form1
             // 
@@ -289,6 +311,8 @@ namespace FlightBookingApp
             Controls.Add(labelFilterDate);
             Controls.Add(dtpFilterDate);
             Controls.Add(btnExport);
+            Controls.Add(btnImportJSON);
+            Controls.Add(btnExportJSON);
             Controls.Add(btnImport);
             Name = "Form1";
             Text = "Заявки на авиабилеты";
@@ -323,6 +347,8 @@ namespace FlightBookingApp
         private Button btnFilter;
         private Button btnExport;
         private Button btnImport;
+        private Button btnExportJSON;
+        private Button btnImportJSON;
         private ListBox lstBookings;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private DateTimePicker dtpFilterDate;

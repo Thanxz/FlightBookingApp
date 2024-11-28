@@ -9,5 +9,16 @@
       "passport_number": "1234567890"
     },
     "departure_date": "2024-11-28T00:00:00+03:00"
+  },
+  {
+    "destination": "dwadwa",
+    "flight_number": "32",
+    "passenger": {
+      "last_name": "wad",
+      "first_name": "wad",
+      "middle_name": "awwad",
+      "passport_number": "31"
+    },
+    "departure_date": "2024-12-07T00:00:00"
   }
 ]

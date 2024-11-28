@@ -1,0 +1,44 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "destination": {
+        "type": "string",
+        "description": "Пункт назначения"
+      },
+      "flight_number": {
+        "type": "string",
+        "description": "Номер рейса"
+      },
+      "passenger": {
+        "type": "object",
+        "properties": {
+          "last_name": {
+            "type": "string",
+            "description": "Фамилия пассажира"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "Имя пассажира"
+          },
+          "middle_name": {
+            "type": "string",
+            "description": "Отчество пассажира"
+          },
+          "passport_number": {
+            "type": "string",
+            "description": "Номер паспорта пассажира"
+          }
+        },
+        "required": ["last_name", "first_name", "passport_number"]
+      },
+      "departure_date": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Дата и время вылета"
+      }
+    },
+    "required": ["destination", "flight_number", "passenger", "departure_date"]
+  }
+}

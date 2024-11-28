@@ -128,6 +128,18 @@ namespace FlightBookingApp
             UpdateBookingList();
         }
 
+        private void btnExportJSON_Click(object sender, EventArgs e)
+        {
+            bookingManager.SaveToJson();
+        }
+
+        private void btnImportJSON_Click(object sender, EventArgs e)
+        {
+            bookingManager.LoadFromJson();
+            UpdateBookingList();
+            MessageBox.Show("Данные успешно загружены из JSON.");
+        }
+
         private void UpdateBookingList()
         {
             lstBookings.DataSource = null;
