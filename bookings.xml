@@ -1,13 +1,25 @@
-[
-  {
-    "destination": "New York",
-    "flight_number": "NY123",
-    "passenger": {
-      "last_name": "Ivan",
-      "first_name": "Ivanov",
-      "middle_name": "Ivanovich",
-      "passport_number": "1234567890"
-    },
-    "departure_date": "2024-11-28T00:00:00+03:00"
-  }
-]
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfFlightBooking xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FlightBooking>
+    <Destination>New York</Destination>
+    <FlightNumber>NY123</FlightNumber>
+    <Passenger>
+      <LastName>Ivan</LastName>
+      <FirstName>Ivanov</FirstName>
+      <MiddleName>Ivanovich</MiddleName>
+      <PassportNumber>1234567890</PassportNumber>
+    </Passenger>
+    <DepartureDate>2024-11-28T00:00:00+03:00</DepartureDate>
+  </FlightBooking>
+  <FlightBooking>
+    <Destination>dwadwa</Destination>
+    <FlightNumber>32</FlightNumber>
+    <Passenger>
+      <LastName>wad</LastName>
+      <FirstName>wad</FirstName>
+      <MiddleName>awwad</MiddleName>
+      <PassportNumber>31</PassportNumber>
+    </Passenger>
+    <DepartureDate>2024-12-07T00:00:00</DepartureDate>
+  </FlightBooking>
+</ArrayOfFlightBooking>
