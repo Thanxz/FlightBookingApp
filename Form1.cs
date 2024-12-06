@@ -140,6 +140,12 @@ namespace FlightBookingApp
             MessageBox.Show("Данные успешно загружены из JSON.");
         }
 
+        private void btnSendMail_Click(object sender, EventArgs e)
+        {
+            bookingManager.SendEmail(txtEmail.Text);
+            UpdateBookingList();
+        }
+
         private void UpdateBookingList()
         {
             lstBookings.DataSource = null;
@@ -172,6 +178,9 @@ namespace FlightBookingApp
 
         }
 
-    
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

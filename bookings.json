@@ -3,7 +3,7 @@
     "destination": "New York",
     "flight_number": "NY123",
     "passenger": {
-      "last_name": "Ivan",
+      "last_name": "1Ivan",
       "first_name": "Ivanov",
       "middle_name": "Ivanovich",
       "passport_number": "1234567890"

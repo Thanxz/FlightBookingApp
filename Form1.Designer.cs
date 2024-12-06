@@ -37,6 +37,7 @@ namespace FlightBookingApp
             txtMiddleName = new TextBox();
             txtPassportNumber = new TextBox();
             txtFilterFlightNumber = new TextBox();
+            txtEmail = new TextBox();
             dtpDepartureDate = new DateTimePicker();
             btnAddBooking = new Button();
             btnRemoveBooking = new Button();
@@ -56,6 +57,7 @@ namespace FlightBookingApp
             btnImport = new Button();
             btnExportJSON = new Button();
             btnImportJSON = new Button();
+            btnSendMail = new Button();
             SuspendLayout();
             // 
             // txtDestination
@@ -107,6 +109,15 @@ namespace FlightBookingApp
             txtFilterFlightNumber.Name = "txtFilterFlightNumber";
             txtFilterFlightNumber.Size = new Size(145, 23);
             txtFilterFlightNumber.TabIndex = 9;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(350, 460);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "Введите email";
+            txtEmail.Size = new Size(200, 23);
+            txtEmail.TabIndex = 9;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // dtpDepartureDate
             // 
@@ -243,9 +254,9 @@ namespace FlightBookingApp
             dtpFilterDate.Size = new Size(145, 23);
             dtpFilterDate.TabIndex = 11;
             dtpFilterDate.ValueChanged += dtpFilterDate_ValueChanged;
-            //
+            // 
             // btnExport
-            //
+            // 
             btnExport.Location = new Point(450, 410);
             btnExport.Name = "btnExport";
             btnExport.Size = new Size(100, 36);
@@ -253,9 +264,9 @@ namespace FlightBookingApp
             btnExport.Text = "Экспорт XML";
             btnExport.UseVisualStyleBackColor = true;
             btnExport.Click += btnExport_Click;
-            //
+            // 
             // btnImport
-            //
+            // 
             btnImport.Location = new Point(350, 410);
             btnImport.Name = "btnImport";
             btnImport.Size = new Size(100, 36);
@@ -263,31 +274,41 @@ namespace FlightBookingApp
             btnImport.Text = "Импорт XML";
             btnImport.UseVisualStyleBackColor = true;
             btnImport.Click += btnImport_Click;
-            //
+            // 
             // btnExportJSON
-            //
+            // 
             btnExportJSON.Location = new Point(200, 410);
-            btnExportJSON.Name = "btnExport";
+            btnExportJSON.Name = "btnExportJSON";
             btnExportJSON.Size = new Size(100, 36);
             btnExportJSON.TabIndex = 10;
             btnExportJSON.Text = "Экспорт JSON";
             btnExportJSON.UseVisualStyleBackColor = true;
             btnExportJSON.Click += btnExportJSON_Click;
-            //
+            // 
             // btnImportJSON
-            //
+            // 
             btnImportJSON.Location = new Point(100, 410);
-            btnImportJSON.Name = "btnImport";
+            btnImportJSON.Name = "btnImportJSON";
             btnImportJSON.Size = new Size(100, 36);
             btnImportJSON.TabIndex = 10;
             btnImportJSON.Text = "Импорт JSON";
             btnImportJSON.UseVisualStyleBackColor = true;
             btnImportJSON.Click += btnImportJSON_Click;
             // 
+            // btnSendMail
+            // 
+            btnSendMail.Location = new Point(553, 452);
+            btnSendMail.Name = "btnSendMail";
+            btnSendMail.Size = new Size(152, 36);
+            btnSendMail.TabIndex = 10;
+            btnSendMail.Text = "Отправить письмо";
+            btnSendMail.UseVisualStyleBackColor = true;
+            btnSendMail.Click += btnSendMail_Click;
+            // 
             // Form1
             // 
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(745, 458);
+            ClientSize = new Size(740, 500);
             Controls.Add(txtDestination);
             Controls.Add(labelDestination);
             Controls.Add(txtFlightNumber);
@@ -314,15 +335,16 @@ namespace FlightBookingApp
             Controls.Add(btnImportJSON);
             Controls.Add(btnExportJSON);
             Controls.Add(btnImport);
+            Controls.Add(btnSendMail);
+            Controls.Add(txtEmail);
             Name = "Form1";
             Text = "Заявки на авиабилеты";
             Load += Form1_Load;
-            //Load += System.EventHandler(this.Form1_Load);
             ResumeLayout(false);
             PerformLayout();
         }
 
-        
+
 
 
 
@@ -335,6 +357,7 @@ namespace FlightBookingApp
         private TextBox txtFirstName;
         private TextBox txtMiddleName;
         private TextBox txtFilterFlightNumber;
+        private TextBox txtEmail;
         private Label label3;
         private Label label4;
         private Label label5;
@@ -349,6 +372,7 @@ namespace FlightBookingApp
         private Button btnImport;
         private Button btnExportJSON;
         private Button btnImportJSON;
+        private Button btnSendMail;
         private ListBox lstBookings;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private DateTimePicker dtpFilterDate;

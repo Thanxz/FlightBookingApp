@@ -8,6 +8,8 @@ using System.IO;
 using System.Xml;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using System.Net.Mail;
+using System.Net;
 
 namespace FlightBookingApp
 {
@@ -282,5 +284,47 @@ namespace FlightBookingApp
             }
 
         }
-}
+
+        public void SendEmail(string emailAddress)
+        {
+            if (File.Exists("../../../bookings.json"))
+            {
+                try
+                {
+                    // Коннект
+                    var smtpClient = new SmtpClient("smtp.gmail.com")
+                    {
+                        Port = 587,
+                        Credentials = new NetworkCredential("wallet.test.mail@gmail.com", ""),
+                        EnableSsl = true
+                    };
+
+                    // Письмо
+                    var mailMessage = new MailMessage
+                    {
+                        From = new MailAddress("wallet.test.mail@gmail.com"),
+                        Subject = "Данные бронирования в формате JSON"
+                    };
+
+                    mailMessage.To.Add(emailAddress);
+
+                    // Прикрепляем файл
+                    mailMessage.Attachments.Add(new Attachment("../../../bookings.json"));
+
+                    // Отправка письма
+                    smtpClient.Send(mailMessage);
+                    MessageBox.Show("Письмо отправлено на: " + emailAddress);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла ошибка при отправке письма: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("JSON файл не найден. Сначала выполните экспорт в JSON.");
+            }
+        }
+
+    }
 }
