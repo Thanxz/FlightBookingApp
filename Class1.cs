@@ -10,6 +10,9 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Net.Mail;
 using System.Net;
+using MailKit;
+using MimeKit;
+using MailKit.Net.Imap;
 
 namespace FlightBookingApp
 {
@@ -323,6 +326,60 @@ namespace FlightBookingApp
             else
             {
                 MessageBox.Show("JSON файл не найден. Сначала выполните экспорт в JSON.");
+            }
+        }
+        public void GetLatestEmailWithJson()
+        {
+            try
+            {
+                using (var client = new ImapClient())
+                {
+                    // Подключение к IMAP серверу Gmail
+                    client.Connect("imap.gmail.com", 993, true);
+
+                    // Аутентификация
+                    client.Authenticate("wallet.test.mail@gmail.com", "");
+
+                    // Переход в папку "Входящие"
+                    var inbox = client.Inbox;
+                    inbox.Open(FolderAccess.ReadOnly);
+
+                    // Получаем последнее сообщение
+                    var message = inbox.GetMessage(inbox.Count - 1);
+
+                    // Проверяем вложения
+                    foreach (var attachment in message.Attachments)
+                    {
+                        if (attachment is MimePart part)
+                        {
+                            // Сохраняем временный файл
+                            var tempPath = Path.Combine(Path.GetTempPath(), part.FileName);
+                            using (var stream = File.Create(tempPath))
+                            {
+                                part.Content.DecodeTo(stream);
+                            }
+
+                            // Читаем содержимое JSON
+                            string jsonContent = File.ReadAllText(tempPath);
+                            var formattedJson = JsonSerializer.Serialize(
+                                JsonSerializer.Deserialize<object>(jsonContent),
+                                new JsonSerializerOptions { WriteIndented = true });
+
+                            // Отображаем JSON
+                            MessageBox.Show("Полученный JSON:\n" + formattedJson);
+
+                            // Удаляем временный файл
+                            File.Delete(tempPath);
+                            return;
+                        }
+                    }
+
+                    MessageBox.Show("Последнее письмо не содержит JSON вложений.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка при получении письма: " + ex.Message);
             }
         }
 

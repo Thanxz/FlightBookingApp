@@ -146,6 +146,11 @@ namespace FlightBookingApp
             UpdateBookingList();
         }
 
+        private void btnReceiveMail_Click(object sender, EventArgs e)
+        {
+            bookingManager.GetLatestEmailWithJson();
+        }
+
         private void UpdateBookingList()
         {
             lstBookings.DataSource = null;
